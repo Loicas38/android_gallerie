@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">gallerie</string>
+    <string name="topappbar">Gallerie de Lucas</string>
+    <string name="tarnier">tarnier de la Réunion</string>
+    <string name="oiseau_afrique">petit oiseau africain dans le parc Kruger</string>
+    <string name="oiseau_poisson">petit oiseau Africain vu à sainte Lucie</string>
+    <string name="elephant">éléphant aperçu dans le parc Kruger</string>
+    <string name="koudou">Koudou</string>
+    <string name="cascade">Cascade</string>
+    <string name="brindille">Brindille</string>
+    <string name="hipopotame">hipopotame</string>
+    <string name="gecko">gecko</string>
+    <string name="crocodile">crocodile</string>
+    <string name="vache">le soleil entre les cornes d\'une vache, lever de soleil en Eswatini</string>
+    <string name="girafe">belle girafe à Kruger</string>
+    <string name="girafon">mignon petit girafon à Kruger</string>
+    <string name="zebre">zèbre au matin, Kruger</string>
+    <string name="zebre_noir_blanc">zèbre en noir et blanc</string>
+    <string name="lemings">sorte de lemings</string>
+    <string name="elephant_2">éléphant avec les oreilles pliées</string>
+    <string name="nuit_1">photo au dessus de l\'autoroute</string>
+    <string name="ombre_flaque">ombre flaque bretagne</string>
+    <string name="oiseau_fleur">Piton de la Fournaise</string>
+    <string name="fleur">Argeles sur mer</string>
+    <string name="oiseau_jaune">étang salé</string>
+    <string name="papillon">papillon à la Réunion</string>
+    <string name="zoulou">photo de zoulou, Afrique du sud</string>
+    <string name="chat_langue">Erdeven</string>
+    <string name="chat_portrait">Erdeven</string>
+    <string name="coquillage">Erdeven</string>
+</resources>
