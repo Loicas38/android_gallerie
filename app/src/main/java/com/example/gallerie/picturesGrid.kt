@@ -1,5 +1,6 @@
 package com.example.gallerie
 
+import android.content.ClipData.Item
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -56,6 +57,7 @@ fun MainPicturesGrid(data: RecordData) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PicturesGridTopAppBar(data: RecordData) {
+    var mode by remember { mutableStateOf(1) }
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -65,45 +67,72 @@ fun PicturesGridTopAppBar(data: RecordData) {
                 modifier = Modifier
                     .fillMaxWidth(1f)
                     .clickable {
-                        data.mode = DisplayMode.PICTURES_GRID
+                        data.mode = DisplayMode.PICTURES_GRID;
+                        mode = 2
                     }
             )
         }
     )
+
+    if (mode != 1){
+        GalleryApp()
+    }
 }
 
 
 @Composable
 fun PicturesGrid(data: RecordData, space: PaddingValues, modifier: Modifier = Modifier) {
-    LazyVerticalStaggeredGrid(
-        columns = StaggeredGridCells.Fixed(2),
-        verticalItemSpacing = 8.dp,
-        contentPadding = space,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        content = {
+    var mode by remember {
+        mutableStateOf(1)
+    }
 
-            items(RecordData.GalleryObject.picturesList) { photo ->
-                Card(
-                    shape = RoundedCornerShape(0.dp)
-                ) {
+    Column(
+        modifier = Modifier.padding(space)
+    ) {
+        // take too much space on the screen
+        /*Text(
+            text = "Gallerie ${stringResource(data.GalleryObject.galleryName)}",
+            style = MaterialTheme.typography.displayMedium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(1f)
+        )*/
 
-                    Image(
-                        painterResource(photo.pictureResourceId),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(0.dp))
-                            .clickable {
-                                data.mode = DisplayMode.PICTURE_DETAILS;
-                                data.DetailedPicture = photo
-                            }
-                    )
 
+        LazyVerticalStaggeredGrid(
+            columns = StaggeredGridCells.Fixed(2),
+            verticalItemSpacing = 8.dp,
+            //contentPadding = space,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            content = {
+                items(RecordData.GalleryObject.picturesList) { photo ->
+                    Card(
+                        shape = RoundedCornerShape(0.dp)
+                    ) {
+
+                        Image(
+                            painterResource(photo.pictureResourceId),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(0.dp))
+                                .clickable {
+                                    data.mode = DisplayMode.PICTURE_DETAILS;
+                                    data.DetailedPicture = photo;
+                                    mode = 2
+                                }
+                        )
+
+                    }
 
                 }
+            },
+            modifier = Modifier
+                .padding(8.dp)
+        )
+    }
 
-            }
-        },
-        modifier = Modifier
-            .padding(8.dp)
-    )
+
+
+    if (mode != 1){
+        GalleryApp()
+    }
 }

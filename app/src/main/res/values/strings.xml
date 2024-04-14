@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">gallerie</string>
 
-    <string name="galleries_grid_top_app_bar">Galleries de Lucas</string>
+    <string name="galleries_grid_top_app_bar">Gallerie de Lucas</string>
     <string name="picture_details_top_app_bar">Présentation de la photo</string>
 
     <string name="tarnier">tarnier de la Réunion</string>

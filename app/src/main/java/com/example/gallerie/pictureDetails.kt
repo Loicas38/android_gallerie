@@ -15,6 +15,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -60,6 +64,10 @@ fun PictureDetailsTopAppBar(data: RecordData) {
 
 @Composable
 fun PictureDetails(data: RecordData, space: PaddingValues) {
+    var mode by remember {
+        mutableStateOf(1)
+    }
+
     Column {
         Image(
             painterResource(data.DetailedPicture.pictureResourceId),
@@ -82,7 +90,10 @@ fun PictureDetails(data: RecordData, space: PaddingValues) {
                 .padding(all = 30.dp)
         )
 
-        Button(onClick = { data.mode = DisplayMode.PICTURES_GRID },
+        Button(onClick = {
+                data.mode = DisplayMode.PICTURES_GRID;
+                mode = 2
+                         },
 
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -94,6 +105,10 @@ fun PictureDetails(data: RecordData, space: PaddingValues) {
 
             )
         }
+    }
+
+    if(mode != 1) {
+        GalleryApp()
     }
 
 

@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -21,13 +20,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.example.gallerie.data.Datasource
 import com.example.gallerie.data.RecordData
 import com.example.gallerie.model.DisplayMode
@@ -45,6 +42,11 @@ fun MainGalleriesGrid(data: RecordData) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GalleriesGridTopAppBar() {
+    var mode by remember {
+        mutableStateOf(
+            1
+        )
+    }
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -53,15 +55,24 @@ fun GalleriesGridTopAppBar() {
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth(1f)
+                    .clickable {
+                        RecordData.mode = DisplayMode.GALLERIES_GRID
+                        mode = 2
+                    }
             )
         }
     )
+
+    if (mode != 1){
+        GalleryApp()
+    }
 }
 
 
 
 @Composable
 fun GalleriesGrid(data: RecordData, space: PaddingValues){
+    var mode by remember { mutableStateOf(1) }
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -79,7 +90,8 @@ fun GalleriesGrid(data: RecordData, space: PaddingValues){
             Box(
                 modifier = Modifier.clickable {
                     data.mode = DisplayMode.PICTURES_GRID;
-                    data.GalleryObject = it
+                    data.GalleryObject = it;
+                    mode = 2
                 }
             ){
                 Image(
@@ -94,4 +106,7 @@ fun GalleriesGrid(data: RecordData, space: PaddingValues){
         }
     }
 
+    if(mode != 1){
+        GalleryApp()
+    }
 }

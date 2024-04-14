@@ -13,6 +13,10 @@ val DancingScript = FontFamily(
     Font(R.font.dancingscript_bold)
 )
 
+val Caveat = FontFamily(
+    Font(R.font.caveat_medium)
+)
+
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -28,6 +32,12 @@ val Typography = Typography(
         fontFamily = DancingScript,
         fontWeight = FontWeight.Bold,
         fontSize = 40.sp
+    ),
+
+    displayMedium = TextStyle(
+        fontFamily = Caveat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 35.sp
     )
 
         /* Other default text styles to override
