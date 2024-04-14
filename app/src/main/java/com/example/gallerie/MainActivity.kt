@@ -6,15 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.FlingBehavior
-import androidx.compose.foundation.gestures.ScrollScope
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
@@ -41,9 +38,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.gallerie.ui.theme.GallerieTheme
-import com.example.gallerie.model.Picture
 import com.example.gallerie.data.Datasource
+import com.example.gallerie.model.Picture
+import com.example.gallerie.ui.theme.GallerieTheme
 
 
 class MainActivity : ComponentActivity() {
@@ -71,10 +68,9 @@ fun GallerieApp() {
         topBar = {
             GallerieTopAppBar()
         }
-    ) { it ->
-
+    ) {
         val images = Datasource().loadPictures()
-        PictureGrid(images = images, it)
+        PictureGrid(images = images, space = it)
     }
 
 }
@@ -104,26 +100,27 @@ fun PictureGrid(images: List<Picture>, space: PaddingValues = PaddingValues(0.dp
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             content = {
                 items(images) { photo ->
-                    Card(shape = RoundedCornerShape(0.dp)) {
-                        Button(onClick = { affichage = 2; grandeImage = photo },
+                    Card(
+                        shape = RoundedCornerShape(0.dp)
+                    ) {
+
+                        Image(
+                            painterResource(photo.pictureResourceId),
+                            contentDescription = null,
                             modifier = Modifier
-                                .fillMaxSize(1f)
-                                .wrapContentSize(align = Alignment.Center, unbounded = false),
-                            shape = RoundedCornerShape(0.dp)) {
+                                .clip(RoundedCornerShape(0.dp))
+                                .clickable {
+                                    affichage = 2;
+                                    grandeImage = photo
+                                }
+                        )
 
-                            Image(
-                                painterResource(photo.pictureResourceId),
-                                contentDescription = null,
-                                modifier = Modifier
 
-                                    .clip(RoundedCornerShape(0.dp))
-                            )
                         }
-                    }
+
                 }
             },
             modifier = Modifier
-                .fillMaxSize()
                 .padding(8.dp)
         )
     } else {
@@ -134,7 +131,7 @@ fun PictureGrid(images: List<Picture>, space: PaddingValues = PaddingValues(0.dp
                 modifier = Modifier
                     .padding(top = 100.dp, bottom = 50.dp)
                     .fillMaxWidth(1f)
-                    .wrapContentSize(align=Alignment.Center)
+                    .wrapContentSize(align = Alignment.Center)
                     .clip(RoundedCornerShape(0.dp))
             )
 
@@ -144,9 +141,9 @@ fun PictureGrid(images: List<Picture>, space: PaddingValues = PaddingValues(0.dp
                     .align(Alignment.CenterHorizontally)
                     .background(
                         color = Color(33, 150, 243, 255),
-                        shape= RoundedCornerShape(20.dp)
+                        shape = RoundedCornerShape(20.dp)
                     )
-                    .padding(all=30.dp)
+                    .padding(all = 30.dp)
             )
 
             Button(onClick = { affichage = 1 },
@@ -166,39 +163,8 @@ fun PictureGrid(images: List<Picture>, space: PaddingValues = PaddingValues(0.dp
 }
 
 
-@Composable
-fun GrandeImage(image: Picture) {
-    Image(
-        painterResource(image.pictureResourceId),
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxHeight(1f)
-            .clip(RoundedCornerShape(0.dp))
-    )
-}
 
-
-@Composable
-fun PictureCard(image: Picture, modifier: Modifier = Modifier) {
-    Card(shape = RoundedCornerShape(0.dp)) {
-        Button(onClick = {  },
-            modifier = Modifier.fillMaxSize(),
-            shape = RoundedCornerShape(0.dp)) {
-
-            Image(
-                painterResource(image.pictureResourceId),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxSize(1f)
-                    .clip(RoundedCornerShape(0.dp))
-                )
-            }
-        }
-
-}
-
-
-@Preview
+@Preview(name = "grille")
 @Composable
 fun Preview() {
     val images = Datasource().loadPictures()
