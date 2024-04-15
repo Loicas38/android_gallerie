@@ -4,22 +4,22 @@
     <string name="galleries_grid_top_app_bar">Gallerie de Lucas</string>
     <string name="picture_details_top_app_bar">Présentation de la photo</string>
 
-    <string name="tarnier">tarnier de la Réunion</string>
+    <string name="tarnier">tarnier de la Réunion, observé à la cascade de Takamaka</string>
     <string name="oiseau_afrique">petit oiseau africain dans le parc Kruger</string>
     <string name="oiseau_poisson">petit oiseau Africain vu à sainte Lucie</string>
     <string name="elephant">éléphant aperçu dans le parc Kruger</string>
     <string name="koudou">Koudou</string>
-    <string name="cascade">Cascade</string>
-    <string name="brindille">Brindille</string>
-    <string name="hipopotame">hipopotame</string>
-    <string name="gecko">gecko</string>
-    <string name="crocodile">crocodile</string>
+    <string name="cascade">Cascade Langevin à la Réunion, prise en pose longue</string>
+    <string name="brindille">Animal camouflé à la Réunion</string>
+    <string name="hipopotame">hipopotame à Sainte Lucie en Afrique du SUd</string>
+    <string name="gecko">gecko à Saint Denis, La Réunion</string>
+    <string name="crocodile">crocodile à Sabie, en Afrique du Sud</string>
     <string name="vache">le soleil entre les cornes d\'une vache, lever de soleil en Eswatini</string>
     <string name="girafe">belle girafe à Kruger</string>
     <string name="girafon">mignon petit girafon à Kruger</string>
     <string name="zebre">zèbre au matin, Kruger</string>
     <string name="zebre_noir_blanc">zèbre en noir et blanc</string>
-    <string name="lemings">sorte de lemings</string>
+    <string name="lemings">sorte de lemings à Kruger</string>
     <string name="elephant_2">éléphant avec les oreilles pliées</string>
     <string name="nuit_1">photo au dessus de l\'autoroute</string>
     <string name="ombre_flaque">ombre flaque bretagne</string>
@@ -35,7 +35,7 @@
     <string name="gallery_1">Animaux</string>
     <string name="gallery_2">Paysages</string>
     <string name="gallery_3">Portraits</string>
-    <string name="gallery_4">Nocturne</string>
+    <string name="gallery_4">Nocturnes</string>
     <string name="all_gallerys">Toutes les photos</string>
 
 

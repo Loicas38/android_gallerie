@@ -2,6 +2,7 @@ package com.example.gallerie
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,6 +47,10 @@ fun MainPictureDetails(data: RecordData) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PictureDetailsTopAppBar(data: RecordData) {
+    var mode by remember {
+        mutableStateOf(1)
+    }
+
     CenterAlignedTopAppBar(
         title = {
             Text(
@@ -54,9 +59,17 @@ fun PictureDetailsTopAppBar(data: RecordData) {
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth(1f)
+                    .clickable {
+                        data.mode = DisplayMode.PICTURES_GRID;
+                        mode = 2
+                    }
             )
         }
     )
+
+    if(mode != 1) {
+        GalleryApp()
+    }
 
 }
 

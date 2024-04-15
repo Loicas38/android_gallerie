@@ -21,10 +21,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.example.gallerie.data.Datasource
 import com.example.gallerie.data.RecordData
 import com.example.gallerie.model.DisplayMode
@@ -32,7 +34,9 @@ import com.example.gallerie.model.DisplayMode
 @Composable
 fun MainGalleriesGrid(data: RecordData) {
     Scaffold (
-        topBar = {GalleriesGridTopAppBar()}
+        topBar = {
+            GalleriesGridTopAppBar()
+        }
     ){
         GalleriesGrid(data = data, it)
     }
@@ -100,7 +104,10 @@ fun GalleriesGrid(data: RecordData, space: PaddingValues){
                 )
 
                 Text(
-                    text = stringResource(it.galleryName)
+                    text = stringResource(it.galleryName),
+                    modifier = Modifier.padding(start = 8.dp, top = 4.dp),
+                    style = MaterialTheme.typography.displaySmall,
+                    color = Color(221, 247, 234, 255)
                 )
             }
         }

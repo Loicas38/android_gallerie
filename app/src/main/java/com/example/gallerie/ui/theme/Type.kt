@@ -38,6 +38,12 @@ val Typography = Typography(
         fontFamily = Caveat,
         fontWeight = FontWeight.Normal,
         fontSize = 35.sp
+    ),
+
+    displaySmall = TextStyle(
+        fontFamily = Caveat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp
     )
 
         /* Other default text styles to override
